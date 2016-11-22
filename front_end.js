@@ -15,7 +15,7 @@ class Community extends Component {
     return (
       <Navigator
         initialRoute= {{
-          id:'Login'
+          id:'Main'
         }}
         renderScene={
           this.navigatorRenderScene
