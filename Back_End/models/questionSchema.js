@@ -6,8 +6,8 @@ var questionSchema = new Schema({
   description : { type: String, required: true },
   category : { type: String, required: true },
   status : { type: String, required: true },
-  optionA: { type: , required: true },
-  optionB: { type: , required: true },
+  optionA: { type: String , required: true },
+  optionB: { type: String, required: true },
   //id : { type: Number, required: true },
 },
 {
@@ -17,4 +17,3 @@ var questionSchema = new Schema({
 var Question = mongoose.model('Question', questionSchema);
 
 module.exports = Question;
-
