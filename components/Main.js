@@ -38,43 +38,43 @@ class Main extends Component {
 
   render() {
     return (
-      <View style ={styles.container}>
+      <View style ={ styles.container }>
 
-        <View style ={styles.header}>
+        <View style ={ styles.header }>
 
-          <TouchableOpacity onPress ={this.onButtonPress.bind(this)} >
-            <Image source={avatar} ></Image>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity onPress ={ this.onButtonPress.bind(this) } >
+            <Image source = { avatar }></Image>
+          </TouchableOpacity>
+        </View>
 
         <ScrollView style ={styles.categories}>
 
-          <TouchableOpacity onPress={this.onButtonPress.bind(this)} >
-            <Image source= {food_background} style = {styles.food}>
-              <Text style={styles.text} >
+          <TouchableOpacity onPress={ this.onButtonPress.bind(this) } >
+            <Image source= { food_background } style = { styles.food }>
+              <Text style={ styles.text } >
                 FOOD
               </Text>
             </Image>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={this.onButtonPress.bind(this)} >
-            <Image source= {clothing_background} style = {styles.food}>
-              <Text style={styles.text} >
+          <TouchableOpacity onPress={ this.onButtonPress.bind(this) } >
+            <Image source= { clothing_background } style = { styles.food }>
+              <Text style={ styles.text } >
                 CLOTHING
               </Text>
             </Image>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={this.onButtonPress.bind(this)} >
-            <Image source= {social_background} style = {styles.food}>
+          <TouchableOpacity onPress={ this.onButtonPress.bind(this) } >
+            <Image source= { social_background } style = { styles.food }>
               <Text style={styles.text} >
                 SOCIAL
               </Text>
             </Image>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={this.onButtonPress.bind(this)} >
-            <Image source= {mis_background} style = {styles.food}>
+          <TouchableOpacity onPress={ this.onButtonPress.bind(this) } >
+            <Image source= { mis_background } style = { styles.food }>
               <Text style={styles.text} >
                 MISCELLANEOUS
               </Text>
@@ -87,8 +87,8 @@ class Main extends Component {
             systemIcon = "featured"
             selected = { this.state.selectedTab === 'tabOne' }
             onPress = {() => this.setTab('tabOne')}>
-              <View style = { styles.tabContent }>
-                <Text style = { styles.tabText }>Tab One</Text>
+              <View style = { styles.contentAbove }>
+                
               </View>
           </TabBarIOS.Item>
           <TabBarIOS.Item
@@ -160,6 +160,12 @@ const styles = StyleSheet.create({
   tabText:{
     margin: 50,
     fontSize: 45,
+  },
+
+  contentAbove: {
+    margin: 0,
+    padding: 0,
+
   },
 
 

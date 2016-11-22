@@ -93,8 +93,9 @@ class Login extends Component {
      .then(() => {
       alert('Success! You may now log in.');
       // Redirect to login screen
-      this.props.navigator.push();
-        id:'Main';
+      this.props.navigator.push({
+          id:'Main'
+      });
      })
      .catch((error) => {
        alert('There was an error logging in.');
