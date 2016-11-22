@@ -87,8 +87,8 @@ class Main extends Component {
             systemIcon = "featured"
             selected = { this.state.selectedTab === 'tabOne' }
             onPress = {() => this.setTab('tabOne')}>
-              <View style = { styles.contentAbove }>
-                
+              <View>
+                <Text style = { styles.tabText }>Tab One</Text>
               </View>
           </TabBarIOS.Item>
           <TabBarIOS.Item
@@ -165,6 +165,7 @@ const styles = StyleSheet.create({
   contentAbove: {
     margin: 0,
     padding: 0,
+
 
   },
 
