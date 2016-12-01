@@ -30,7 +30,7 @@ class Congrats extends Component{
           Registration Succesful!
         </Text>
         <Text style ={styles.message}>
-        Congratulations! You are now registered with Community App! Please sign in to continue.
+        Congratulations! You are now registered with Queri! Please sign in to continue.
         </Text>
         <TouchableOpacity onPress ={this.onButtonPress.bind(this)} style = {styles.button}>
           <Text style = {styles.buttontext}>

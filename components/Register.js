@@ -1,3 +1,4 @@
+// Register Page
 import React, { Component } from 'react';
 import {
   TouchableOpacity,
@@ -109,7 +110,7 @@ class Register extends Component {
     .done()
   }else{
     // Form validation error
-    alert('Please fix the errors listed and try again.')
+    alert('Please fix the errors listed and try again.');
   }
 }
 
@@ -169,4 +170,4 @@ const styles = StyleSheet.create({
   }
 })
 
-module.exports = Register
+module.exports = Register;

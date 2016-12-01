@@ -16,20 +16,18 @@ const background = require('../Images/blueback.png');
 const Form = t.form.Form
 
 const newUser = t.struct({
-  username: t.String,
-  password:  t.String,
+  "username" : t.String,
+  "password" :  t.String,
 })
 
 const options = {
-  fields: {
-
-  password: {
-    autoCapitalize: 'none',
-    password: true,
-    autoCorrect: false,
-    secureTextEntry: true
-  },
-
+  fields : {
+    password : {
+      autoCapitalize: 'none',
+      password: true,
+      autoCorrect: false,
+      secureTextEntry: true
+    },
   }
 }
 
@@ -40,20 +38,19 @@ class Login extends Component {
     super(props)
     this.state = {
       value: {
-        username: '',
-        email: '',
-        password: '',
-        confirmPassword: ''
+        "username" : '',
+        "email" : '',
+        "password" : '',
+        "confirmPassword" : ''
       }
     }
   }
 
-
   componentWillUnmount() {
     this.setState = {
       value: {
-        username: '',
-        password: null,
+        "username" : '',
+        "password" : null,
       }
     }
   }
@@ -76,7 +73,7 @@ class Login extends Component {
     if(value){
       const data = {
         "username" : value.username,
-        "password" : value.password,
+        "password" : value.password
       }
       // Serialize and post the data
       console.log(data);
@@ -93,21 +90,21 @@ class Login extends Component {
       .then(() => {
         alert('Success! You may now log in.');
         // Redirect to main screen
-        this.props.navigator.push();
-        id:'Main';
+        this.props.navigator.push({
+          id:'Main'
+        });
       })
       .catch((error) => {
         alert('There was an error logging in.');
       })
       .done()
-    } else {
+    }else{
       // Form validation error
-      alert('Please fix the errors listed and try again.')
+      alert('Please fix the errors listed and try again.');
     }
   }
 
-  render() {
-
+render(){
   return (
     <Image source= {background}>
       <View style={styles.container}>

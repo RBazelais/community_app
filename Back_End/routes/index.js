@@ -21,36 +21,39 @@ router.put('/register', register);
 router.put('/login', login);
 
 function addQuestion(req, res){
-  if(!req.body) res.json({
-    "status" : "fail",
-    "data" : "No data sent"
-  });
-  User.findOne({ "username" : req.user.username });
-  if(!User){
-    res.json({
+  if(!req.body){
+    return res.json({
       "status" : "fail",
-      "data" : { "username" : "User not found" }
+      "data" : "No data sent"
     });
   }
 
+User.findOne({ "username" : req.body.username }, function(err, test){
+  /*return res.json({
+    "status" : "fail",
+    "data" : { "username" : "User not found" }
+  });*/
+
   var newq = new Question({
-    "creator" : User.objectId,
-    "description" : JSON.parse(JSON.stringify(req.body.description).replace(/"\s+|\s+"/g,'"')),
-    "category" : JSON.parse(JSON.stringify(req.body.category).replace(/"\s+|\s+"/g,'"')),
+    "creator" : test._id,
+    "description" : req.body.question,
+    //"category" : JSON.parse(JSON.stringify(req.body.category).replace(/"\s+|\s+"/g,'"')),
     "status" : "Open",
-    "optionA" : JSON.parse(JSON.stringify(req.body.optionA).replace(/"\s+|\s+"/g,'"')),
-    "optionB" : JSON.parse(JSON.stringify(req.body.optionB).replace(/"\s+|\s+"/g,'"')),
+    "optionA" : req.body.OptionA,
+    "optionB" : req.body.OptionB
   });
+
   newq.save(function(err){
     if(err){
       console.log('Error saving question');
       return res.send();
       res.json({ "status": "fail", "ERROR": err });
-    } else
+    }else
       res.json({ "SUCCESS": newq });
   });
+});
 }
-    
+
 
 function deleteQuestion(req, res){
   res.render('index', { title: 'FUTURE DELETE QUESTION '});
@@ -74,10 +77,9 @@ function register(req, res){
   if(!User.findOne({ "email" : req.body.email })){
     res.json({
       "status" : "fail",
-      "Message" : "Email already taken" 
+      "Message" : "Email already taken"
     });
   }
-  
 
   var newUser = new User({
     "username" : JSON.parse(JSON.stringify(req.body.username).replace(/"\s+|\s+"/g,'"')),
@@ -97,23 +99,20 @@ function register(req, res){
 }
 
 function login(req, res){
-  if(!User.findOne({ "username" : JSON.parse(JSON.stringify(req.body.username).replace(/"\s+|\s+"/g,'"')) })){
-    res.json({
-      "status": "fail", 
-      "Message" : "Username not found."
-    });
-  }else if(!User.findOne({ "username" : JSON.parse(JSON.stringify(req.body.username).replace(/"\s+|\s+"/g,'"')), 
-    "password" : JSON.parse(JSON.stringify(req.body.password).replace(/"\s+|\s+"/g,'"')) })){
-    res.json({
-      "status" : "fail", 
-      "Message" : "Username & password combination not found."
-    });
-  }else{
-    res.json({
-      "status" : "Success!", 
-      "Message" : User
-    });
-  }
+  User.findOne({ "username" : req.body.username }, function(err, test){
+    if(JSON.parse(JSON.stringify(test.password).replace(/"\s+|\s+"/g,'"')) != req.body.password){
+      return res.send();
+      res.json({
+        "status" : "fail",
+        "Message" : "Incorrect password."
+      });
+    }
+    else{
+      res.json({
+        "SUCCESS" : test 
+      });
+    }
+  });
 }
 
 module.exports = router;

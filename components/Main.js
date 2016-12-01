@@ -113,7 +113,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Cochin',
   }
 
-
 });
 
 
